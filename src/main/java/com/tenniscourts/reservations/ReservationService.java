@@ -99,11 +99,21 @@ public class ReservationService {
             return reservation.getValue();
         }
 
+        if(hours > 12 && hours < 24) {
+            return reservation.getValue().multiply(BigDecimal.valueOf(0.75));
+        }
+
+        if(hours > 2 && hours < 12) {
+            return reservation.getValue().multiply(BigDecimal.valueOf(0.5));
+        }
+
+        if(hours > 0 && hours < 12) {
+            return reservation.getValue().multiply(BigDecimal.valueOf(0.25));
+        }
+
         return BigDecimal.ZERO;
     }
 
-    /*TODO: This method actually not fully working, find a way to fix the issue when it's throwing the error:
-            "Cannot reschedule to the same slot.*/
     public ReservationDTO rescheduleReservation(Long previousReservationId, Long scheduleId) {
         Reservation previousReservation = cancel(previousReservationId);
 
