@@ -28,7 +28,7 @@ public class GuestController extends BaseRestController {
     }
 
     @DeleteMapping(value = "/delete/{guestId}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<String> update(@PathVariable("guestId") Long guestId) {
+    public ResponseEntity<String> delete(@PathVariable("guestId") Long guestId) {
         return ResponseEntity.ok(guestService.delete(guestId));
     }
 
