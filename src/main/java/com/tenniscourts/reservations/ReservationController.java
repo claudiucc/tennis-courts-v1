@@ -8,6 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 @AllArgsConstructor
 @RequestMapping("/tenniscourts-api/reservation")
@@ -33,5 +35,10 @@ public class ReservationController extends BaseRestController {
     @PostMapping(value = "/reschedule", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<ReservationDTO> rescheduleReservation(@RequestBody CreateRescheduleReservationRequestDTO createRescheduleReservationRequestDTO) {
         return ResponseEntity.ok(reservationService.rescheduleReservation(createRescheduleReservationRequestDTO.getReservationId(), createRescheduleReservationRequestDTO.getScheduleId()));
+    }
+
+    @GetMapping(value = "/history", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<ReservationDTO>> getPastReservations() {
+        return ResponseEntity.ok(reservationService.getPastReservations());
     }
 }

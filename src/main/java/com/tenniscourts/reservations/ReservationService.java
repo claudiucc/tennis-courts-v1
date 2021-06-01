@@ -19,6 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
+import java.util.List;
 
 @Service
 @AllArgsConstructor
@@ -133,5 +134,9 @@ public class ReservationService {
         }
 
         return newReservation;
+    }
+
+    public List<ReservationDTO> getPastReservations() {
+        return reservationMapper.map(reservationRepository.getPastReservations());
     }
 }
