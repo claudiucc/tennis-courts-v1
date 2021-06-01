@@ -18,7 +18,6 @@ public class TennisCourtService {
     private final TennisCourtMapper tennisCourtMapper;
 
     public TennisCourtDTO addTennisCourt(TennisCourtDTO tennisCourt) {
-        log.info("ceva");
         return tennisCourtMapper.map(tennisCourtRepository.saveAndFlush(tennisCourtMapper.map(tennisCourt)));
     }
 
